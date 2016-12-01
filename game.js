@@ -1,11 +1,13 @@
 var namespace = "http://www.w3.org/2000/svg"
 
+var foodEaten = 0;
+
 var positionX = 550;
 var positionY = 250;
 var foodY;
 var foodX;
-var width = 17;
-var height = 12;
+var width = 7;
+var height = 10;
 var message = "";
 
 document.addEventListener("keydown", function(e) {
@@ -32,6 +34,8 @@ document.addEventListener("keydown", function(e) {
   if(positionX > foodX - width && positionX < foodX + width && positionY >foodY - height && positionY < foodY + height) {
     console.log("message")
     document.getElementById("foodthing").setAttribute("y", randomNumber(0, 300))
+    foodEaten = foodEaten + 1
+    document.getElementById("scoreboard").textContent = foodEaten
   }
 
 })
