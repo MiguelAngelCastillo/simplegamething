@@ -9,6 +9,8 @@ var foodX;
 var width = 7;
 var height = 10;
 var message = "";
+var timeStart = Date.now()
+var end= "";
 
 document.addEventListener("keydown", function(e) {
   if(e.keyCode == 37){
@@ -42,4 +44,12 @@ document.addEventListener("keydown", function(e) {
 function randomNumber(min,max)
 {
  return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+if(foodEaten == 5){
+  console.log("End")
+  document.getElementById("canvas").pauseAnimation()
+  var timeStop = Date.now()
+  var duration = timeStop - timeStart
+  document.getElementById("totaltime").textContent = duration
 }
