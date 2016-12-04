@@ -39,17 +39,16 @@ document.addEventListener("keydown", function(e) {
     foodEaten = foodEaten + 1
     document.getElementById("scoreboard").textContent = foodEaten
   }
-
+  if(foodEaten == 6){
+    console.log("End")
+    document.getElementById("canvas").pauseAnimations()
+    var timeStop = Date.now()
+    var duration = Math.round((timeStop - timeStart)/1000)+" seconds"
+    document.getElementById("totaltime").textContent = duration
+    document.getElementById("totaltime").setAttribute("opacity", 1)
+  }
 })
 function randomNumber(min,max)
 {
  return Math.floor(Math.random()*(max-min+1)+min);
-}
-
-if(foodEaten == 5){
-  console.log("End")
-  document.getElementById("canvas").pauseAnimation()
-  var timeStop = Date.now()
-  var duration = timeStop - timeStart
-  document.getElementById("totaltime").textContent = duration
 }
