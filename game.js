@@ -6,8 +6,10 @@ var positionX = 550;
 var positionY = 250;
 var foodY;
 var foodX;
-var width = 7;
-var height = 10;
+var foodYB;
+var foodXB;
+var width = 10;
+var height = 20;
 var message = "";
 var timeStart = Date.now()
 var end= "";
@@ -39,6 +41,17 @@ document.addEventListener("keydown", function(e) {
     foodEaten = foodEaten + 1
     document.getElementById("scoreboard").textContent = foodEaten
   }
+
+  foodYB = Number(document.getElementById("thingfood").getAttribute("y"))
+  foodXB = Number(document.getElementById("thingfood").getAttribute("x"))
+
+  if(positionX > foodXB - width && positionX < foodXB + width && positionY >foodYB - height && positionY < foodYB + height) {
+    console.log("message")
+    document.getElementById("thingfood").setAttribute("x", randomNumber(0, 300))
+    foodEaten = foodEaten + 1
+    document.getElementById("scoreboard").textContent = foodEaten
+  }
+
   if(foodEaten == 6){
     console.log("End")
     document.getElementById("canvas").pauseAnimations()
@@ -46,6 +59,7 @@ document.addEventListener("keydown", function(e) {
     var duration = Math.round((timeStop - timeStart)/1000)+" seconds"
     document.getElementById("totaltime").textContent = duration
     document.getElementById("totaltime").setAttribute("opacity", 1)
+    document.getElementById("time").setAttribute("opacity", 1)
   }
 })
 function randomNumber(min,max)
